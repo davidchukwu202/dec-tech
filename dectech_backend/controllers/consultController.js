@@ -1,4 +1,4 @@
-import Consult from '../models/Consult';
+import Consult from '../models/Consult.js';
 
 export const createConsult = async (req, res) => {
   try {
@@ -6,7 +6,7 @@ export const createConsult = async (req, res) => {
     const saved = await consult.save();
     res.json(saved);
   } catch (error) {
-    console.error('Consult not saved', err.message);
+    console.error('Consult not saved', error.message);
   }
 };
 
@@ -15,6 +15,6 @@ export const getAllConsults = async (req, res) => {
     const consults = await Consult.find();
     res.json(consults);
   } catch (error) {
-    console.error('No Consult found', err.message);
+    console.error('No Consult found', error.message);
   }
 };

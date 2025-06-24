@@ -1,11 +1,11 @@
-import Product from '../models/Product';
+import Product from '../models/Product.js';
 
 export const getProducts = async (req, res) => {
   try {
     const products = await Product.find();
     res.json(products);
   } catch (error) {
-    console.error('No products found', err.message);
+    console.error('No products found', error.message);
   }
 };
 
@@ -14,8 +14,9 @@ export const addProduct = async (req, res) => {
     const product = new Product(req.body);
     const saved = await product.save();
     res.json(saved);
+    console.log('product created');
   } catch (error) {
-    console.error('add product error', err.message);
+    console.error('add product error', error.message);
   }
 };
 
@@ -31,7 +32,7 @@ export const updateProduct = async (req, res) => {
     }
     res.json(updated);
   } catch (error) {
-    console.error('update error', err.message);
+    console.error('update error', error.message);
   }
 };
 
@@ -40,6 +41,6 @@ export const deleteProduct = async (req, res) => {
     await Product.findOneAndDelete(req.params.id);
     res.send(deleted);
   } catch (error) {
-    console.error('product not deleted', err.message);
+    console.error('product not deleted', error.message);
   }
 };
