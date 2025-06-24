@@ -20,6 +20,10 @@ app.use('/products', productRoutes);
 app.use('/consults', consultRoutes);
 app.use('/battery', batteryRoutes);
 
+app.get('/', (req, res) => {
+  res.send('WELCOME TO DEC-TECH');
+});
+
 //define your ports
 const PORT = process.env.PORT || 3000;
 
