@@ -2,10 +2,11 @@ import mongoose from 'mongoose';
 
 const consultSchema = new mongoose.Schema(
   {
-    fullName: String,
-    phone: String,
-    systemType: String,
-    notes: String,
+    name: { type: String, required: true },
+    email: { type: String, required: true },
+    phone: { type: String },
+    subject: { type: String },
+    message: { type: String, required: true },
   },
   { timestamps: true }
 );
